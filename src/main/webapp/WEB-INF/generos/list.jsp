@@ -1,33 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>${genre.id == null ? 'Novo Gênero' : 'Editar Gênero'}</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">
+    <title>Lista de Gêneros</title>
 </head>
 <body>
-    <div class="container">
-        <h1>${genre.id == null ? 'Novo Gênero' : 'Editar Gênero'}</h1>
-        
-        <form:form modelAttribute="genre" method="post">
-            <c:if test="${genre.id != null}">
-                <form:hidden path="id"/>
-            </c:if>
-            
-            <div class="form-group">
-                <label for="nome">Nome do Gênero:</label>
-                <form:input path="nome" id="nome"/>
-                <form:errors path="nome" cssClass="error"/>
-            </div>
-            
-            <div>
-                <input type="submit" value="${genre.id == null ? 'Criar' : 'Atualizar'}" class="btn">
-                <a href="/generos" class="btn">Cancelar</a>
-            </div>
-        </form:form>
-    </div>
+    <h1>Gêneros</h1>
+    
+    <c:if test="${not empty message}">
+        <div style="color: green;">${message}</div>
+    </c:if>
+    
+    <a href="/generos/novo">Novo Gênero</a>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="genero" items="${generos}">
+                <tr>
+                    <td>${genero.id}</td>
+                    <td>${genero.nome}</td>
+                    <td>
+                        <a href="/generos/editar/${genero.id}">Editar</a>
+                        <a href="/generos/excluir/${genero.id}" 
+                           onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </body>
 </html>
