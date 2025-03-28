@@ -6,6 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>${genre.id == null ? 'Novo Gênero' : 'Editar Gênero'}</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">
+</head>
 </head>
 <body>
     <h1>${genre.id == null ? 'Novo Gênero' : 'Editar Gênero'}</h1>

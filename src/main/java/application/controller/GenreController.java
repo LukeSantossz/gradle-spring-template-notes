@@ -16,18 +16,16 @@ public class GenreController {
     @Autowired
     private GenreService genreService;
 
-    // Listar todos os gêneros
     @GetMapping
     public String listGenres(Model model) {
         model.addAttribute("generos", genreService.getAllGenres());
-        return "generos/list";
+        return "generos/list";  // Verifique o caminho da view
     }
 
-    // Formulário de novo gênero
     @GetMapping("/novo")
     public String showNewGenreForm(Model model) {
         model.addAttribute("genre", new Genre());
-        return "generos/form";
+        return "generos/form";  // Verifique o caminho da view
     }
 
     // Salvar novo gênero
