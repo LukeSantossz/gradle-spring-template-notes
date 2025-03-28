@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Gêneros</title>
+    <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
     <h1>Gêneros</h1>
